@@ -19,19 +19,19 @@ body {
 .chat_window {
 	border-radius: 10px;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-	background-color: #f8f8f8;
+	background-color: #6abdcf;
 	overflow: hidden;
 }
 
 .top_menu {
-	background-color: #fff;
+	background-color: #508d9a;
 	padding: 13px 0px;
 	box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
 }
 
 .top_menu .title {
 	text-align: center;
-	color: #337ab7;
+	color: #fff;
 	font-size: 20px;
 }
 
@@ -111,18 +111,22 @@ body {
 }
 
 .messages .message.left .text_wrapper {
-	background-color: #f3eeca;
+	background-color: #30626d;
 	margin-left: 20px;
 }
 
 .messages .message.left .text_wrapper::after,
 .messages .message.left .text_wrapper::before {
 	right: 100%;
-	border-right-color: #f3eeca;
+	border-right-color: #30626d;
+}
+
+.messages .message.left {
+	color: #ffffff;
 }
 
 .messages .message.left .timestamp {
-	color: #b0742f;
+	color: #c4c4c4;
 }
 
 /* user message */
@@ -133,7 +137,7 @@ body {
 }
 
 .messages .message.right .text_wrapper {
-	background-color: #b0d4f3;
+	background-color: #d9d9d9;
 	margin-right: 20px;
 	float: right;
 }
@@ -141,17 +145,17 @@ body {
 .messages .message.right .text_wrapper::after,
 .messages .message.right .text_wrapper::before {
 	left: 100%;
-	border-left-color: #b0d4f3;
+	border-left-color: #d9d9d9;
 }
 
 .messages .message.right .timestamp {
-	color: #1a5770;
+	color: #4c4c4c;
 }
 
 /* text inpur from user */
 
 .bottom_wrapper {
-	background-color: #fff;
+	background-color: #508d9a;
 	padding: 20px;
 	bottom: 0;
 	display: flex;
@@ -168,12 +172,12 @@ body {
 
 .app_button_1 {
 	width: 140px;
-	background-color: #a3d063;
+	background-color: #d9d9d9;
 	border-radius: 50px;
 	cursor: pointer;
 	padding: 12px;
 
-	color: #fff;
+	color: #000;
 	font-size: 18px;
 	font-weight: 300;
 	text-align: center;
