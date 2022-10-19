@@ -1,5 +1,16 @@
-# virtual-teacher-assistant
+# Chatbot Frontend
+A simple chatbot frontend for plugging in my bots.
 
-A chatbot is an AI-based software designed to interact with humans in a natural way.
+To add a user message to the chat window
+run javascript function -
 
-After years of teaching at UTD , there are several places where information given to the student and questions asked by students are repetitive. This sometime is overwhelming to instructors and teaching assistants with high number of students. It will be interesting to develop an AI teaching assistant that can interact with students and provide basic to complex support
+    showUserMessage("Message",getCurrentTimestamp());
+
+To add a bot message to the chat window
+run javascript function -
+
+    showBotMessage("Message",getCurrentTimestamp());
+
+## Screenshot
+![enter image description here](./static/img/demo.png)
+
