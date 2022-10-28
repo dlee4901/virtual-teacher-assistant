@@ -73,7 +73,7 @@ $('#send_button').on('click', function (e) {
 	// show bot message
 	setTimeout(function () {
 		showBotMessage(randomstring());
-	}, 300);
+	}, 200);
 });
 
 /**
