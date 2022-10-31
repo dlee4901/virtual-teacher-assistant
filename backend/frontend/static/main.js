@@ -67,12 +67,34 @@ function showBotMessage(message, datetime) {
  */
 $('#send_button').on('click', function (e) {
 	// get and show message and reset input
+	if($('#msg_input').val().length == 0){
+		return;
+	}
 	showUserMessage($('#msg_input').val());
+	botMessage = "Hello";
+
+/*    async () => {
+        const response = await fetch("http://127.0.0.1:5000/postMessage",
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            method: "POST",
+            body: JSON.stringify({message: $('#msg_input').val()})
+        }
+        )
+        response.json().then(data => {
+            console.log(data)
+			botMessage = data["message"]
+		})
+	}
+*/
 	$('#msg_input').val('');
 
 	// show bot message
 	setTimeout(function () {
-		showBotMessage(randomstring());
+		showBotMessage(botMessage);
 	}, 200);
 });
 
