@@ -12,5 +12,5 @@ run javascript function -
     showBotMessage("Message",getCurrentTimestamp());
 
 ## Screenshot
-![enter image description here](./static/img/demo.png)
+![enter image description here](./backend/frontend/static/img/demo.png)
 
