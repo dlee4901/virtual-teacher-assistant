@@ -73,7 +73,7 @@ $('#send_button').on('click', function (e) {
 	showUserMessage($('#msg_input').val());
 	botMessage = "Hello";
 
-/*    async () => {
+    async () => {
         const response = await fetch("http://127.0.0.1:5000/postMessage",
         {
             headers: {
@@ -89,7 +89,7 @@ $('#send_button').on('click', function (e) {
 			botMessage = data["message"]
 		})
 	}
-*/
+
 	$('#msg_input').val('');
 
 	// show bot message
