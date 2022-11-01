@@ -73,7 +73,9 @@ $('#send_button').on('click', function (e) {
 	showUserMessage($('#msg_input').val());
 	botMessage = "Hello";
 
-    async () => {
+	botMessage = sendMessage()
+
+    async function sendMessage() {
         const response = await fetch("http://127.0.0.1:5000/postMessage",
         {
             headers: {
@@ -84,9 +86,9 @@ $('#send_button').on('click', function (e) {
             body: JSON.stringify({message: $('#msg_input').val()})
         }
         )
-        response.json().then(data => {
+    	response.json().then(data => {
             console.log(data)
-			botMessage = data["message"]
+			return data["message"]
 		})
 	}
 
