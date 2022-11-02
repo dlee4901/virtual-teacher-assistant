@@ -72,6 +72,7 @@ $('#send_button').on('click', function (e) {
 	}
 	showUserMessage($('#msg_input').val());
 	botMessage = "Hello";
+	userMessage = ($('#msg_input').val());
 
     async function sendMessage() {
         const response = await fetch("http://127.0.0.1:5000/postMessage",
@@ -81,16 +82,16 @@ $('#send_button').on('click', function (e) {
                 'Content-Type': 'application/json'
               },
             method: "POST",
-            body: JSON.stringify({message: $('#msg_input').val()})
+            body: JSON.stringify({'message': userMessage})
         }
         )
-    	const data = await response.json();
-		return data;
+    	response.json().then(data => {
+            console.log(data);
+			botMessage = data['message'];
+		})
 	}
 
 	data = sendMessage();
-	botMessage = data['message']
-
 	$('#msg_input').val('');
 
 	// show bot message
