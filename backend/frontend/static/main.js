@@ -67,52 +67,36 @@ function showBotMessage(message, datetime) {
  */
 $('#send_button').on('click', function (e) {
 	// get and show message and reset input
-	if($('#msg_input').val().length == 0){
+	if ($('#msg_input').val().length == 0) {
 		return;
 	}
 	showUserMessage($('#msg_input').val());
-	botMessage = "Hello";
-	userMessage = ($('#msg_input').val());
+	botMessage = 'Hello';
+	userMessage = $('#msg_input').val();
 
-    async function sendMessage() {
-        const response = await fetch("http://127.0.0.1:5000/postMessage",
-        {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-            method: "POST",
-            body: JSON.stringify({'message': userMessage})
-        }
-        )
-    	response.json().then(data => {
-            console.log(data);
-		})
+	async function sendMessage() {
+		const response = await fetch('http://127.0.0.1:5000/postMessage', {
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({ message: userMessage }),
+		});
+		response.json().then((data) => {
+			console.log('1 ' + data['message']);
+			botMessage = data['message'];
+		});
 	}
 
 	data = sendMessage();
 
-	async function getMessage() {
-		fetch('http://127.0.0.1:5000/getMessage', {
-    	method: 'GET',
-    	headers: {
-        	'Accept': 'application/json',
-    	},
-		})
-		.then(response => response.json().then(data => {
-			console.log(data);
-			botMessage = data['message'];
-		}))
-	}
-
-	data = getMessage();
-	
 	$('#msg_input').val('');
 
 	// show bot message
 	setTimeout(function () {
 		showBotMessage(botMessage);
-	}, 200);
+	}, 2000);
 });
 
 /**
