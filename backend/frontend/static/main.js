@@ -87,11 +87,23 @@ $('#send_button').on('click', function (e) {
         )
     	response.json().then(data => {
             console.log(data);
-			botMessage = data['message'];
 		})
 	}
 
 	data = sendMessage();
+
+	fetch('http://127.0.0.1:5000/getMessage', {
+    	method: 'GET',
+    	headers: {
+        	'Accept': 'application/json',
+    	},
+	})
+	.then(response => response.json().then(data => {
+		console.log(data);
+		botMessage = data['message'];
+	}))
+	
+	data = getMessage();
 	$('#msg_input').val('');
 
 	// show bot message

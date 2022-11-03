@@ -1,7 +1,7 @@
 import os, sys, json
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 from flask_cors import CORS
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, jsonify
 
 app = Flask(__name__)
 CORS(app)
@@ -19,7 +19,9 @@ def AnswerQuestion(question):
 
 @app.route('/postMessage', methods=['POST'])
 def postMessage():
-#    data = request.json
+    data = request.json
 #    message = AnswerQuestion(data['message'])
-    return json.dumps({'message': "TEST"})
+    message = "test"
+    print(message)
+    return json.dumps({'message': message})
 
