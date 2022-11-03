@@ -6,7 +6,7 @@ from flask import Flask, request, send_from_directory, jsonify
 app = Flask(__name__)
 CORS(app)
 
-nlp = pipeline("question-answering", model = ".\ClassInfoTAPipeline")
+nlp = pipeline("question-answering", model = "./ClassInfoTAPipeline")
 context_file = open('classInfo.txt','r')
 QA_Input = {'context': context_file.read()}
 
