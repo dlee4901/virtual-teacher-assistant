@@ -2,7 +2,6 @@ import os, sys, json
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 from flask_cors import CORS
 from flask import Flask, request, send_from_directory, jsonify
-import json
 
 app = Flask(__name__)
 CORS(app)
