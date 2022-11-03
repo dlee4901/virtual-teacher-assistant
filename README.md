@@ -14,3 +14,8 @@ run javascript function -
 ## Screenshot
 ![enter image description here](./backend/frontend/static/img/demo.png)
 
+
+## Instructions to run locally
+
+Download clone folder and put into folder called ClassInfoTAPipeline and put folder in backend folder
+python, flask, flask cors, transformers[pytorch]
