@@ -5,6 +5,8 @@ function getCurrentTimestamp() {
 	return new Date();
 }
 
+questionType = 0
+
 /**
  * Renders a message on the chat screen based on the given arguments.
  * This is called from the `showUserMessage` and `showBotMessage`.
@@ -67,36 +69,79 @@ function showBotMessage(message, datetime) {
  */
 $('#send_button').on('click', function (e) {
 	// get and show message and reset input
-	if ($('#msg_input').val().length == 0) {
+	userMessage = $('#msg_input').val().trim();
+	botMessage = 'Type Class or Material';
+
+	if (userMessage.length == 0) {
 		return;
 	}
+	
 	showUserMessage($('#msg_input').val());
-	botMessage = 'Hello';
-	userMessage = $('#msg_input').val();
 
-	async function sendMessage() {
-		const response = await fetch('http://127.0.0.1:5000/postMessage', {
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-			body: JSON.stringify({ message: userMessage }),
-		});
-		response.json().then((data) => {
-			console.log('1 ' + data['message']);
-			botMessage = data['message'];
-		});
+	if(questionType == 0){
+		if(userMessage == "Class") {
+			questionType = 1
+			botMessage = "Enter a question"
+		} else if(userMessage == "Material") {
+			questionType = 2
+			botMessage = "Enter a question"
+		}
+		
+		$('#msg_input').val('');
+
+		// show bot message
+		setTimeout(function () {
+			showBotMessage(botMessage);
+		}, 200);
+	} else if(questionType == 1) {
+		async function sendMessage() {
+			const response = await fetch('http://127.0.0.1:5000/postClassMessage', {
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({ message: userMessage }),
+			});
+			response.json().then((data) => {
+				console.log('1 ' + data['message']);
+				botMessage = data['message'];
+			});
+		}
+	
+		data = sendMessage();
+	
+		$('#msg_input').val('');
+		questionType = 0;
+		// show bot message
+		setTimeout(function () {
+			showBotMessage(botMessage);
+		}, 2000);
+	} else if(questionType == 2){
+		async function sendMessage() {
+			const response = await fetch('http://127.0.0.1:5000/postMaterialMessage', {
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				method: 'POST',
+				body: JSON.stringify({ message: userMessage }),
+			});
+			response.json().then((data) => {
+				console.log('1 ' + data['message']);
+				botMessage = data['message'];
+			});
+		}
+	
+		data = sendMessage();
+	
+		$('#msg_input').val('');
+		questionType = 0;
+		// show bot message
+		setTimeout(function () {
+			showBotMessage(botMessage);
+		}, 2000);
 	}
-
-	data = sendMessage();
-
-	$('#msg_input').val('');
-
-	// show bot message
-	setTimeout(function () {
-		showBotMessage(botMessage);
-	}, 2000);
 });
 
 /**
@@ -121,5 +166,5 @@ function randomstring(length = 20) {
  * Set initial bot message to the screen for the user.
  */
 $(window).on('load', function () {
-	showBotMessage('Hello there! Type in a message.');
+	showBotMessage('Hello there! Type Class or Material.');
 });
