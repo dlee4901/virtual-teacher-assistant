@@ -116,9 +116,11 @@ $('#send_button').on('click', function (e) {
 		// show bot message
 		setTimeout(function () {
 			showBotMessage(botMessage);
-			botMessage = 'Type Class or Material'
-			showBotMessage(botMessage);
 		}, 2000);
+		setTimeout(function () {
+			botMessage = 'Type Class or Material';
+			showBotMessage(botMessage);
+		}, 3000);
 	} else if(questionType == 2){
 		async function sendMessage() {
 			const response = await fetch('http://127.0.0.1:5000/postMaterialMessage', {
@@ -142,9 +144,11 @@ $('#send_button').on('click', function (e) {
 		// show bot message
 		setTimeout(function () {
 			showBotMessage(botMessage);
+		}, 5000);
+		setTimeout(function () {
 			botMessage = 'Type Class or Material'
 			showBotMessage(botMessage);
-		}, 5000);
+		}, 6000);
 	}
 });
 
