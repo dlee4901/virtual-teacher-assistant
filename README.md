@@ -27,7 +27,7 @@ https://www.python.org/downloads/
 Install flask:
 pip install flask
 
-Install flask-cors
+Install flask-cors:
 pip install -U flask-cors
 
 Install PyTorch:
