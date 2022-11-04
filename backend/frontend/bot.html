@@ -2,6 +2,11 @@
 
 <head>
 
+	<link rel="stylesheet" href="https://latex.codecogs.com/css/equation-embed.css"/>
+	<script src="https://latex.codecogs.com/js/eq_config.js"></script>
+	<script src="https://latex.codecogs.com/js/eq_editor-lite-19.js"></script>
+
+	
 	<!-- seo related -->
 	<title>Chatbot Frontend</title>
 
@@ -80,7 +85,13 @@
 
 				</div>
 			</div>
-
+			<div id="editor"></div>
+			<textarea id="testbox"></textarea>
+			<img id="equation"/>
+			<script>
+  				EqEditor.embed('editor','');
+  				EqEditor.add(new EqTextArea('equation', 'testbox'),false);
+			</script>
 		</div>
 
 	</div>
