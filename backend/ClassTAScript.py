@@ -11,6 +11,7 @@ from haystack.pipelines import ExtractiveQAPipeline
 from haystack.utils import print_answers, fetch_archive_from_http, convert_files_to_docs, clean_wiki_text, launch_es
 from haystack.nodes import TfidfRetriever, FARMReader
 
+# Flask setup
 app = Flask(__name__)
 CORS(app)
 
