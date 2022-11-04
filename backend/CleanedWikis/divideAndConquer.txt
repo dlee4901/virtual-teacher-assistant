@@ -1,0 +1,19 @@
+Divide And Conquer 
+This technique can be divided into the following three parts:
+
+Divide: This involves dividing the problem into smaller sub-problems.
+Conquer: Solve sub-problems by calling recursively until solved.
+Combine: Combine the sub-problems to get the final solution of the whole problem.
+
+Advantages of Divide and Conquer Algorithm:
+
+The difficult problem can be solved easily.
+It divides the entire problem into subproblems thus it can be solved parallelly ensuring multiprocessing
+Efficiently uses cache memory without occupying much space
+Reduces time complexity of the problem
+
+Disadvantages of Divide and Conquer Algorithm:
+
+It involves recursion which is sometimes slow
+Efficiency depends on the implementation of logic
+It may crash the system if the recursion is performed rigorously
