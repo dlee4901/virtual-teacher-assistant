@@ -70,86 +70,40 @@ function showBotMessage(message, datetime) {
 $('#send_button').on('click', function (e) {
 	// get and show message and reset input
 	userMessage = $('#msg_input').val().trim();
-	botMessage = 'Type Class or Material';
+	botMessage = 'Ask me a Question';
 
 	if (userMessage.length == 0) {
 		return;
 	}
 	
 	showUserMessage($('#msg_input').val());
-
-	if(questionType == 0){
-		if(userMessage == "Class") {
-			questionType = 1
-			botMessage = "Enter a question"
-		} else if(userMessage == "Material") {
-			questionType = 2
-			botMessage = "Enter a question"
-		}
-		
-		$('#msg_input').val('');
-
-		// show bot message
-		setTimeout(function () {
-			showBotMessage(botMessage);
-		}, 200);
-	} else if(questionType == 1) {
-		async function sendMessage() {
-			const response = await fetch('http://127.0.0.1:5000/postClassMessage', {
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-				method: 'POST',
-				body: JSON.stringify({ message: userMessage }),
-			});
-			response.json().then((data) => {
-				console.log('1 ' + data['message']);
-				botMessage = data['message'];
-			});
-		}
-	
-		data = sendMessage();
-	
-		$('#msg_input').val('');
-		questionType = 0;
-		// show bot message
-		setTimeout(function () {
-			showBotMessage(botMessage);
-		}, 2000);
-		setTimeout(function () {
-			botMessage = 'Type Class or Material';
-			showBotMessage(botMessage);
-		}, 3000);
-	} else if(questionType == 2){
-		async function sendMessage() {
-			const response = await fetch('http://127.0.0.1:5000/postMaterialMessage', {
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-				method: 'POST',
-				body: JSON.stringify({ message: userMessage }),
-			});
-			response.json().then((data) => {
-				console.log('1 ' + data['message']);
-				botMessage = data['message'];
-			});
-		}
-	
-		data = sendMessage();
-	
-		$('#msg_input').val('');
-		questionType = 0;
-		// show bot message
-		setTimeout(function () {
-			showBotMessage(botMessage);
-		}, 5000);
-		setTimeout(function () {
-			botMessage = 'Type Class or Material'
-			showBotMessage(botMessage);
-		}, 6000);
+	async function sendMessage() {
+		const response = await fetch('http://127.0.0.1:5000/postClassMessage', {
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({ message: userMessage }),
+		});
+		response.json().then((data) => {
+			console.log('1 ' + data['message']);
+			botMessage = data['message'];
+		});
 	}
+	
+	data = sendMessage();
+
+	$('#msg_input').val('');
+	questionType = 0;
+	// show bot message
+	setTimeout(function () {
+		showBotMessage(botMessage);
+	}, 5000);
+	setTimeout(function () {
+		botMessage = 'Ask me a Question';
+		showBotMessage(botMessage);
+	}, 6000);
 });
 
 /**
@@ -174,5 +128,5 @@ function randomstring(length = 20) {
  * Set initial bot message to the screen for the user.
  */
 $(window).on('load', function () {
-	showBotMessage('Hello there! Type Class or Material.');
+	showBotMessage('Hello there! Ask me a Question');
 });
