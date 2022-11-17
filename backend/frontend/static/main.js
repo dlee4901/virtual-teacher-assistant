@@ -95,7 +95,11 @@ $('#send_button').on('click', function (e) {
 	data = sendMessage();
 
 	$('#msg_input').val('');
-	questionType = 0;
+
+	document.getElementById('qq').style.visibility = "visible";
+	setTimeout(function () {
+		document.getElementById('qq').style.visibility = "hidden";
+	}, 5000)
 	// show bot message
 	setTimeout(function () {
 		showBotMessage(botMessage);
