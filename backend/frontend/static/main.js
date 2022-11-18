@@ -104,10 +104,6 @@ $('#send_button').on('click', function (e) {
 	setTimeout(function () {
 		showBotMessage(botMessage);
 	}, 5000);
-	setTimeout(function () {
-		botMessage = 'Ask me a Question';
-		showBotMessage(botMessage);
-	}, 6000);
 });
 
 /**
