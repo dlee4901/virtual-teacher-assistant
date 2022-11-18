@@ -32,7 +32,7 @@
 
 		<div class="row padded_row">
 
-			<!-- left side content -->
+			<!-- right side content -->
 			<div class="col-md-7">
 
 				<div class="chat_window">
@@ -60,16 +60,22 @@
 
 			</div>
 
-			<!-- right side content -->
+			<!-- left side content -->
 			<div class="col-md-5">
 				<div class="chat_window">
 				</div>
-				<div id="editor" style="width:500px; height:358.7px;"></div>
-				<!--<textarea id="testbox"></textarea>-->
+				<div id="editor" style="width:600px; height:358.7px;"></div>
+				<textarea id="testbox"></textarea>
 				<img id="equation"/>
 				<script>
 					EqEditor.embed('editor','');
-					EqEditor.add(new EqTextArea('equation', 'msg_input'),false);
+					EqEditor.add(new EqTextArea('equation', 'testbox'),false);
+				</script>
+				<button onclick="myFunction()">copy</button>
+				<script>
+					function myFunction() {
+						document.getElementById("msg_input").value = document.getElementById("msg_input").value + document.getElementById("testbox").value;
+					}
 				</script>
 			</div>
 		</div>
