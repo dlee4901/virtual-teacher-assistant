@@ -110,25 +110,24 @@ $('#send_button').on('click', function (e) {
         });
     }
 	
-	data = sendMessageFlask();
-	data = sendMessageRasa();
+    data1 = sendMessageFlask();
+    data2 = sendMessageRasa();
 
-	if(probabilityFlask > 0.5){
-		botMessage = botMessageFlask;
-	} else {
-		botMessageRasa;
-	}
+    $('#msg_input').val('');
 
-	$('#msg_input').val('');
-
-	document.getElementById('qq').style.visibility = "visible";
-	setTimeout(function () {
-		document.getElementById('qq').style.visibility = "hidden";
-	}, 5000)
-	// show bot message
-	setTimeout(function () {
-		showBotMessage(botMessage);
-	}, 5000);
+    document.getElementById('qq').style.visibility = "visible";
+    setTimeout(function () {
+		
+        document.getElementById('qq').style.visibility = "hidden";
+    }, 5000)
+    // show bot message
+    setTimeout(function () {
+		botMessage = botMessageRasa
+		if(probabilityFlask > 0.25){
+			botMessage = botMessageFlask;
+		}
+        showBotMessage(botMessage);
+    }, 5000);
 });
 
 $('#sum_button').on('click', function (e) {
@@ -174,7 +173,6 @@ function randomstring(length = 20) {
 
 /**
  * Set initial bot message to the screen for the user.
- */
 $(window).on('load', function () {
 	showBotMessage('Hi! I am Temoc.');
 });
