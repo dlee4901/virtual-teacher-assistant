@@ -8,7 +8,7 @@ body {
 }
 
 .row.padded_row,
-.row.padded_row > div {
+.row.padded_row>div {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
@@ -45,6 +45,7 @@ body {
 	margin: 0;
 	height: 500px;
 	overflow: scroll;
+	overflow-x: hidden;
 }
 
 .messages .message {
@@ -170,8 +171,34 @@ body {
 	margin-right: 15px;
 }
 
+.bottom_latex {
+	background-color: #508d9a;
+	padding: 20px;
+	bottom: 0;
+	display: flex;
+}
+.eq_preview {
+	background-color: #ffffff;
+	padding: 20px;
+	bottom: 0;
+	display: flex;
+}
+
 .app_button_1 {
 	width: 140px;
+	background-color: #d9d9d9;
+	border-radius: 50px;
+	cursor: pointer;
+	padding: 12px;
+
+	color: #000;
+	font-size: 18px;
+	font-weight: 300;
+	text-align: center;
+}
+
+.app_button_2 {
+	width: 200px;
 	background-color: #d9d9d9;
 	border-radius: 50px;
 	cursor: pointer;
@@ -211,4 +238,104 @@ body {
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
+}
+
+.stage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	padding: 2rem 0;
+	margin: 0 -5%;
+	overflow: hidden;
+}
+
+.dot-falling {
+	position: relative;
+	left: -9999px;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #fff;
+	box-shadow: 9999px 0 0 0 #fff;
+	animation: dotFalling 1s infinite linear;
+	animation-delay: .1s;
+	visibility: hidden;
+}
+
+.dot-falling::before,
+.dot-falling::after {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: 0;
+}
+
+.dot-falling::before {
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #fff;
+	animation: dotFallingBefore 1s infinite linear;
+	animation-delay: 0s;
+}
+
+.dot-falling::after {
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #fff;
+	animation: dotFallingAfter 1s infinite linear;
+	animation-delay: .2s;
+}
+
+@keyframes dotFalling {
+	0% {
+		box-shadow: 9999px -15px 0 0 rgba(152, 128, 255, 0);
+	}
+
+	25%,
+	50%,
+	75% {
+		box-shadow: 9999px 0 0 0 #fff;
+	}
+
+	100% {
+		box-shadow: 9999px 15px 0 0 rgba(152, 128, 255, 0);
+	}
+}
+
+@keyframes dotFallingBefore {
+	0% {
+		box-shadow: 9984px -15px 0 0 rgba(152, 128, 255, 0);
+	}
+
+	25%,
+	50%,
+	75% {
+		box-shadow: 9984px 0 0 0 #fff;
+	}
+
+	100% {
+		box-shadow: 9984px 15px 0 0 rgba(152, 128, 255, 0);
+	}
+}
+
+@keyframes dotFallingAfter {
+	0% {
+		box-shadow: 10014px -15px 0 0 rgba(152, 128, 255, 0);
+	}
+
+	25%,
+	50%,
+	75% {
+		box-shadow: 10014px 0 0 0 #fff;
+	}
+
+	100% {
+		box-shadow: 10014px 15px 0 0 rgba(152, 128, 255, 0);
+	}
 }
