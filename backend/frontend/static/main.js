@@ -71,13 +71,16 @@ $('#send_button').on('click', function (e) {
 	// get and show message and reset input
 	userMessage = $('#msg_input').val().trim();
 	botMessage = 'Ask me a Question';
+	botMessageFlask = "";
+	botMessageRasa = "";
+	probabilityFlask = 0;
 
 	if (userMessage.length == 0) {
 		return;
 	}
 	
 	showUserMessage($('#msg_input').val());
-	async function sendMessage() {
+	async function sendMessageFlask() {
 		const response = await fetch('http://127.0.0.1:5000/postClassMessage', {
 			headers: {
 				Accept: 'application/json',
@@ -88,11 +91,33 @@ $('#send_button').on('click', function (e) {
 		});
 		response.json().then((data) => {
 			console.log('1 ' + data['message']);
-			botMessage = data['message'];
+			botMessageFlask = data['message'];
+			probabilityFlask = data['probability'];
 		});
 	}
+    async function sendMessageRasa() {
+        const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({ sender: "test_user", message: userMessage }),
+        });
+        response.json().then((data) => {
+            console.log('1 ' + data[0]);
+            botMessageRasa = data[0].text;
+        });
+    }
 	
-	data = sendMessage();
+	data = sendMessageFlask();
+	data = sendMessageRasa();
+
+	if(probabilityFlask > 0.5){
+		botMessage = botMessageFlask;
+	} else {
+		botMessageRasa;
+	}
 
 	$('#msg_input').val('');
 
@@ -106,6 +131,29 @@ $('#send_button').on('click', function (e) {
 	}, 5000);
 });
 
+$('#sum_button').on('click', function (e) {
+	document.getElementById("msg_input").value = document.getElementById("msg_input").value + "\\sum_{}^{}";
+})
+
+$('#sub_button').on('click', function (e) {
+	document.getElementById("msg_input").value = document.getElementById("msg_input").value + "_{}";
+})
+
+$('#super_button').on('click', function (e) {
+	document.getElementById("msg_input").value = document.getElementById("msg_input").value + "^{}";
+})
+
+$('#fraction_button').on('click', function (e) {
+	document.getElementById("msg_input").value = document.getElementById("msg_input").value + "\\frac{}{}";
+})
+
+$('#log_button').on('click', function (e) {
+	document.getElementById("msg_input").value = document.getElementById("msg_input").value + "\\log ";
+})
+
+$('#bigO_button').on('click', function (e) {
+	document.getElementById("msg_input").value = document.getElementById("msg_input").value + "O\\left (  \\right )";
+})
 /**
  * Returns a random string. Just to specify bot message to the user.
  */
@@ -128,5 +176,5 @@ function randomstring(length = 20) {
  * Set initial bot message to the screen for the user.
  */
 $(window).on('load', function () {
-	showBotMessage('Hello there! Ask me a Question');
+	showBotMessage('Hi! I am Temoc.');
 });
