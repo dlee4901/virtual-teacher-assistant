@@ -1,30 +1,31 @@
 <html>
 
-<head>
+	<head>
 
-	<link rel="stylesheet" href="https://latex.codecogs.com/css/equation-embed.css"/>
-	<script src="https://latex.codecogs.com/js/eq_config.js"></script>
-	<script src="https://latex.codecogs.com/js/eq_editor-lite-19.js"></script>
+		<link rel="stylesheet" href="https://latex.codecogs.com/css/equation-embed.css" />
+		<script src="https://latex.codecogs.com/js/eq_config.js"></script>
+		<script src="https://latex.codecogs.com/js/eq_editor-lite-19.js"></script>
 
-	
-	<!-- seo related -->
-	<title>Virtual TA Chatbot</title>
 
-	<!-- meta related -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- seo related -->
+		<title>Virtual TA Chatbot</title>
 
-	<!-- vendor css & style files -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Open+Sans:300|Oxygen|Material+Icons"
-		rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<!-- meta related -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<!-- custom css -->
-	<link rel="stylesheet" type="text/css" href="static/main.css">
+		<!-- vendor css & style files -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+			rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Open+Sans:300|Oxygen|Material+Icons"
+			rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-</head>
+		<!-- custom css -->
+		<link rel="stylesheet" type="text/css" href="static/main.css">
+
+	</head>
 
 <body>
 
@@ -43,7 +44,7 @@
 
 					<!-- dynamically rendered-->
 					<li id="pp" class="messages"></li>
-					
+
 					<div class="stage">
 						<div id="qq" class="dot-falling"></div>
 					</div>
@@ -52,32 +53,35 @@
 					<div class="bottom_wrapper">
 						<!--<input id="msg_input" placeholder="Say Hi to begin chat..." />-->
 						<textarea id="msg_input"></textarea>
+						
 						<div id="send_button" class="app_button_1">Send</div>
 					</div>
 
+					<div class="bottom_latex">
+						<div id="sum_button" class="app_button_2">&#8721;</div>
+						<div id="sub_button" class="app_button_2">N&#8339;</div>
+						<div id="super_button" class="app_button_2">N <sup>x</div>
+						<div id="fraction_button" class="app_button_2">&#247;</div>
+						<div id="log_button" class="app_button_2">Log</div>
+						<div id="bigO_button" class="app_button_2">O(x)</div>
+					</div>
+					<div class = "eq_preview">
+						<img id="equation" />
+						<script>
+						EqEditor.embed('editor', '');
+						EqEditor.add(new EqTextArea('equation', 'msg_input'), false);
+						</script>
+					</div>
 
 				</div>
 
 			</div>
 
 			<!-- left side content -->
-			<div class="col-md-5">
-				<div class="chat_window">
-				</div>
-				<div id="editor" style="width:600px; height:358.7px;"></div>
-				<textarea id="testbox"></textarea>
-				<img id="equation"/>
-				<script>
-					EqEditor.embed('editor','');
-					EqEditor.add(new EqTextArea('equation', 'testbox'),false);
-				</script>
-				<button onclick="myFunction()">copy</button>
-				<script>
-					function myFunction() {
-						document.getElementById("msg_input").value = document.getElementById("msg_input").value + document.getElementById("testbox").value;
-					}
-				</script>
-			</div>
+
+
+
+
 		</div>
 
 	</div>
