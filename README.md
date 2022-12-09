@@ -1,15 +1,5 @@
 # Chatbot Frontend
-A simple chatbot frontend for plugging in my bots.
-
-To add a user message to the chat window
-run javascript function -
-
-    showUserMessage("Message",getCurrentTimestamp());
-
-To add a bot message to the chat window
-run javascript function -
-
-    showBotMessage("Message",getCurrentTimestamp());
+A virtual chatbot that replecates a similar Teacher-Assistant enviornment in real-life
 
 ## Screenshot
 ![enter image description here](./backend/frontend/static/img/demo.png)
@@ -37,3 +27,18 @@ Sample command: pip3 install torch torchvision torchaudio
 
 Install transformers:
 pip install transformers
+
+Install rasa:
+pip install rasa
+
+Afterwards download both releases, the Rasa model and the Classroom TA Pipeline. Put the rasa model in the same directory as the GitHub repository, and put the Classroom TA Pipeline in the virtual-teacher-assistance folder. Afterwards open two terminals and run
+
+flask --app ClassTAScript.py run
+
+While in the backend folder and
+
+rasa run --enable-api --cors="*" --port 5005
+
+While in the RasaTest folder.
+
+Afterwards run a run & debug on the bot.html file within front-end and the chatbot should pop up.
