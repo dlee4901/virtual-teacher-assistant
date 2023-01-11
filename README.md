@@ -1,5 +1,5 @@
 # Chatbot Frontend
-A virtual chatbot that replecates a similar Teacher-Assistant enviornment in real-life
+A virtual chatbot that replicates a similar teacher-assistant environment
 
 ## Screenshot
 ![enter image description here](./backend/frontend/static/img/demo.png)
